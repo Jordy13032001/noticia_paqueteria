@@ -1,0 +1,102 @@
+.rastreo {
+  position: relative;
+  height: 100vh; /* Toda la altura visible */
+  background: url("https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background: rgba(77, 20, 140, 0.75); /* tono violeta semitransparente */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+}
+
+.contenedor h2 {
+  color: #4d148c;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.contenedor p {
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* FORMULARIO */
+.formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+input[type='text'] {
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.btn {
+  background-color: #9d67e2;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #8c19eb;
+}
+
+/* RESULTADO */
+.resultado {
+  margin-top: 1.5rem;
+  background: #f9f7ff;
+  border-left: 5px solid #4d148c;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: left;
+}
+
+.error {
+  color: #e55a00;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .formulario {
+    flex-direction: column;
+  }
+
+  input[type='text'],
+  .btn {
+    width: 100%;
+  }
+}

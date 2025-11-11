@@ -1,0 +1,58 @@
+<section class="noticias">
+  <h2>Últimas Noticias de Paquetería</h2>
+  <p>Mantente informado sobre las novedades de nuestros servicios y actualizaciones.</p>
+
+  <!-- 🟣 Bloque solo visible para el administrador logueado -->
+  <div *ngIf="esAdmin" class="panel-admin">
+    <h3>Agregar nueva noticia</h3>
+
+    <div class="formulario-noticia">
+      <input
+        type="text"
+        placeholder="Título"
+        [(ngModel)]="nuevaNoticia.titulo"
+      />
+      <input
+        type="text"
+        placeholder="URL de la imagen (opcional)"
+        [(ngModel)]="nuevaNoticia.url_imagen"
+      />
+      <textarea
+        rows="3"
+        placeholder="Descripción"
+        [(ngModel)]="nuevaNoticia.descripcion"
+      ></textarea>
+
+      <button (click)="agregarNoticia()">➕ Agregar Noticia</button>
+    </div>
+  </div>
+
+  <!-- 📰 Noticias existentes -->
+  <div *ngIf="!noticias.length" class="mensaje">
+    No hay noticias disponibles.
+  </div>
+
+  <div class="grid">
+    <div class="card" *ngFor="let noticia of noticias">
+      <img
+        *ngIf="noticia.url_imagen"
+        [src]="noticia.url_imagen"
+        alt="{{ noticia.titulo }}"
+      />
+      <div class="contenido">
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.descripcion }}</p>
+        <span class="fecha">📅 {{ noticia.fecha }}</span>
+
+        <!-- 🔴 Botón eliminar solo para admin -->
+        <button
+          *ngIf="esAdmin"
+          class="btn-eliminar"
+          (click)="eliminarNoticia(noticia.id_noticia)"
+        >
+          🗑️ Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

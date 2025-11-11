@@ -1,0 +1,99 @@
+<section class="banner">
+  <div class="texto">
+    <h2>{{ empresa.nombre || 'Paquetería Express' }}</h2>
+    <p><strong>{{ empresa.mensaje_principal || 'Ofrecemos servicios de envío rápidos, seguros y confiables a todo el país.' }}</strong></p>
+    <a routerLink="/rastreo" class="btn">Rastrear Envío</a>
+  </div>
+</section>
+
+<!-- Botón visible solo para admin -->
+<div class="editar-admin" *ngIf="isAdmin">
+  <button class="btn-editar" (click)="abrirModal()">✏️ Editar información de la empresa</button>
+</div>
+
+<section class="porque">
+  <h3>¿Por qué elegirnos?</h3>
+  <p>
+    Más de 10 años entregando confianza, puntualidad y atención personalizada.
+    Somos líderes en soluciones logísticas adaptadas a tus necesidades.
+  </p>
+</section>
+
+<!-- 🌟 Tarjetas visualmente mejoradas -->
+<section class="empresa-info">
+  <div class="empresa-card">
+    <h3>MISIÓN</h3>
+    <p>{{ empresa.mision || 'Brindar soluciones integrales de paquetería que garanticen seguridad y satisfacción.' }}</p>
+  </div>
+
+  <div class="empresa-card">
+    <h3>VISIÓN</h3>
+    <p>{{ empresa.vision || 'Ser la empresa líder en servicios de paquetería reconocida por su innovación.' }}</p>
+  </div>
+</section>
+
+<!-- 🟣 Modal de edición -->
+<div class="modal-overlay" *ngIf="mostrarModal">
+  <div class="modal">
+    <h2>Editar información de la empresa</h2>
+    <form #empresaForm="ngForm" (ngSubmit)="guardarCambios(empresaForm)">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" [(ngModel)]="empresa.nombre" required />
+
+      <label>Mensaje principal:</label>
+      <textarea name="mensaje_principal" [(ngModel)]="empresa.mensaje_principal" required></textarea>
+
+      <label>Misión:</label>
+      <textarea name="mision" [(ngModel)]="empresa.mision" required></textarea>
+
+      <label>Visión:</label>
+      <textarea name="vision" [(ngModel)]="empresa.vision" required></textarea>
+
+      <div class="modal-buttons">
+        <button type="submit" class="btn-guardar">💾 Guardar cambios</button>
+        <button type="button" class="btn-cancelar" (click)="cerrarModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- 🌟 Sección de Servicios -->
+<section class="servicios">
+  <h2>Nuestros Servicios</h2>
+  <div class="tarjetas-servicios">
+    <div class="tarjeta">
+      <span class="icono">🚚</span>
+      <h3>Envíos Nacionales</h3>
+      <p>Llegamos a todas las provincias con entregas seguras y tarifas competitivas.</p>
+    </div>
+    <div class="tarjeta">
+      <span class="icono">🌎</span>
+      <h3>Envíos Internacionales</h3>
+      <p>Conectamos tus paquetes con el mundo mediante socios logísticos confiables.</p>
+    </div>
+    <div class="tarjeta">
+      <span class="icono">⚡</span>
+      <h3>Entregas Express</h3>
+      <p>Servicio urgente para que tus envíos lleguen el mismo día en ciudades principales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 💬 Testimonios -->
+<section class="testimonios">
+  <h2>Lo que dicen nuestros clientes</h2>
+  <div class="contenedor-testimonios">
+    <div class="testimonio">
+      <p>“Excelente servicio, mi paquete llegó antes de lo esperado.”</p>
+      <h4>⭐⭐⭐⭐⭐ — Ana R.</h4>
+    </div>
+    <div class="testimonio">
+      <p>“La atención al cliente fue impecable. Muy recomendados.”</p>
+      <h4>⭐⭐⭐⭐⭐ — Carlos M.</h4>
+    </div>
+    <div class="testimonio">
+      <p>“Rápidos, confiables y con precios accesibles. Repetiré sin dudar.”</p>
+      <h4>⭐⭐⭐⭐⭐ — Sofía L.</h4>
+    </div>
+  </div>
+</section>
+

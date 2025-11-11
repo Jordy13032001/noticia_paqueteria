@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <div class="logo">📦 Paquetería</div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/">Inicio</a></li>
+    <li><a routerLink="/noticias">Noticias</a></li>
+    <li><a routerLink="/contacto">Contáctanos</a></li>
+    <li><a routerLink="/rastreo">Rastreo</a></li>
+  </ul>
+
+  <div class="acciones">
+    <!-- 🔹 Si no está logueado -->
+    <button *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-login">
+      Login
+    </button>
+
+    <!-- 🔹 Si está logueado -->
+    <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-logout">
+      Cerrar sesión
+    </button>
+  </div>
+</nav>

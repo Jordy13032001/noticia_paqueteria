@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-principal: #4d148c;
+  --color-secundario: #a054e7;
+  --color-fondo: #baa9e7;
+  --texto: #333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--texto);
+}
+
+/* Header */
+header {
+  background-color: var(--color-principal);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--color-secundario);
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Botones */
+.btn {
+  background: var(--color-secundario);
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #802ecc;
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-principal);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+.login-link {
+  background-color: #ff6200;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+.login-link:hover {
+  background-color: #e55a00;
+}

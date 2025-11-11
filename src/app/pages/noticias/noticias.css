@@ -1,0 +1,88 @@
+.noticias {
+  text-align: center;
+}
+
+.grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card .contenido {
+  padding: 1rem;
+}
+
+.fecha {
+  display: block;
+  margin-top: 0.5rem;
+  color: #007bff;
+  font-weight: 500;
+}
+/* Panel admin */
+.panel-admin {
+  background: #f7f5ff;
+  border: 2px solid #a86ae6;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.formulario-noticia input,
+.formulario-noticia textarea {
+  width: 100%;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.formulario-noticia button {
+  background: #ff6600;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.formulario-noticia button:hover {
+  background: #e65c00;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.btn-eliminar:hover {
+  background: #b52b27;
+}
+

@@ -1,0 +1,28 @@
+<section class="rastreo">
+  <div class="overlay">
+    <div class="contenedor">
+      <h2>Rastrea tu Envío</h2>
+      <p>Ingresa el ID de tu envío para verificar su estado actual.</p>
+
+      <form (submit)="buscarEnvio()" class="formulario">
+        <input
+          type="text"
+          [(ngModel)]="idRastreo"
+          placeholder="Ingrese ID de envío"
+          name="idRastreo"
+          required
+        />
+        <button type="submit" class="btn">Buscar</button>
+      </form>
+
+      <div *ngIf="resultado" class="resultado">
+        <h3>📦 Resultado del Envío</h3>
+        <p><strong>ID:</strong> {{ resultado.id_envio }}</p>
+        <p><strong>Estado:</strong> {{ resultado.estado }}</p>
+        <p><strong>Cliente:</strong> {{ resultado.cliente }}</p>
+      </div>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+    </div>
+  </div>
+</section>
