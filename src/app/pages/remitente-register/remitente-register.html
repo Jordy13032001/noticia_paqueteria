@@ -1,0 +1,136 @@
+<section class="registro-section">
+
+  <!-- 🔹 BANNER SUPERIOR -->
+  <div class="top-message">
+    <h2>¡Regístrate como Remitente!</h2>
+    <p>Crea tu cuenta y comienza a gestionar tus envíos rápidamente.</p>
+  </div>
+
+  <!-- 🔹 TARJETA DEL FORMULARIO -->
+  <div class="registro-card">
+
+    <div class="title-area">
+      <h2>Crear Cuenta</h2>
+      <p>Completa tus datos para comenzar a enviar con nosotros.</p>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="registrar(f)" novalidate>
+
+      <!-- Nombre Completo -->
+      <div class="input-group">
+        <label>Nombre completo *</label>
+        <input
+          type="text"
+          name="nombre_completo"
+          placeholder="Ej: Jordy Briceño"
+          required
+          minlength="3"
+          [(ngModel)]="formData.nombre_completo"
+          #nombre="ngModel"
+        />
+
+        <small *ngIf="nombre.invalid && nombre.touched" class="error">
+          {{ nombre.errors?.['required'] ? 'El nombre es obligatorio.' : '' }}
+          {{ nombre.errors?.['minlength'] ? 'Debe tener al menos 3 caracteres.' : '' }}
+        </small>
+      </div>
+
+      <!-- Correo -->
+      <div class="input-group">
+        <label>Correo electrónico *</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="tucorreo@ejemplo.com"
+          required
+          email
+          [(ngModel)]="formData.email"
+          #email="ngModel"
+        />
+
+        <small *ngIf="email.invalid && email.touched" class="error">
+          {{ email.errors?.['required'] ? 'El correo es obligatorio.' : '' }}
+          {{ email.errors?.['email'] ? 'Debe ser un correo válido.' : '' }}
+        </small>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="input-group">
+        <label>Contraseña *</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Mínimo 6 caracteres"
+          required
+          minlength="6"
+          [(ngModel)]="formData.password"
+          #password="ngModel"
+        />
+
+        <small *ngIf="password.invalid && password.touched" class="error">
+          {{ password.errors?.['required'] ? 'La contraseña es obligatoria.' : '' }}
+          {{ password.errors?.['minlength'] ? 'Debe tener al menos 6 caracteres.' : '' }}
+        </small>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="input-group">
+        <label>Teléfono *</label>
+        <input
+          type="text"
+          name="telefono"
+          placeholder="0998765432"
+          required
+          pattern="^[0-9]{7,10}$"
+          [(ngModel)]="formData.telefono"
+          #telefono="ngModel"
+        />
+
+        <small *ngIf="telefono.invalid && telefono.touched" class="error">
+          {{ telefono.errors?.['required'] ? 'El teléfono es obligatorio.' : '' }}
+          {{ telefono.errors?.['pattern'] ? 'Debe tener entre 7 y 10 números.' : '' }}
+        </small>
+      </div>
+
+      <!-- Dirección -->
+      <div class="input-group">
+        <label>Dirección *</label>
+        <textarea
+          name="direccion"
+          placeholder="Ej: Calle 10 y Av. Central, Quito"
+          required
+          minlength="5"
+          [(ngModel)]="formData.direccion"
+          #direccion="ngModel"
+        ></textarea>
+
+        <small *ngIf="direccion.invalid && direccion.touched" class="error">
+          {{ direccion.errors?.['required'] ? 'La dirección es obligatoria.' : '' }}
+          {{ direccion.errors?.['minlength'] ? 'Debe tener al menos 5 caracteres.' : '' }}
+        </small>
+      </div>
+
+      <button class="btn-submit" [disabled]="f.invalid">
+        Crear cuenta
+      </button>
+
+    </form>
+
+    <p class="alternative">
+      ¿Ya tienes una cuenta?  
+      <a routerLink="/login">Iniciar sesión</a>
+    </p>
+
+  </div>
+
+</section>
+
+<!-- 🌟 MODAL DE ÉXITO -->
+<div class="modal" *ngIf="registroExitoso">
+  <div class="modal-content">
+    <div class="icon">🎉</div>
+    <h2>Registro Exitoso</h2>
+    <p>Tu cuenta ha sido creada correctamente.</p>
+    <button class="btn-modal" (click)="cerrarModal()">Aceptar</button>
+  </div>
+</div>

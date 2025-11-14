@@ -1,27 +1,84 @@
-<section class="login-container">
-  <form (ngSubmit)="onLogin()" #loginForm="ngForm" novalidate>
-    <h2>Iniciar Sesión</h2>
+<section class="login-section">
 
-    <label for="email">Correo Electrónico</label>
-    <input
-      id="email"
-      type="email"
-      name="email"
-      [(ngModel)]="email"
-      required
-      placeholder="mateo@example.com"
-    />
+  <div class="login-wrapper"> <!-- 🔥 ENVUELVE TODO PARA CENTRADO PERFECTO -->
 
-    <label for="password">Contraseña</label>
-    <input
-      id="password"
-      type="password"
-      name="password"
-      [(ngModel)]="password"
-      required
-      placeholder="••••"
-    />
+    <!-- 🔹 BANNER SUPERIOR -->
+    <div class="top-message">
+      <h2>Bienvenido de Nuevo</h2>
+      <p>Ingresa tus datos para acceder a tu cuenta de remitente.</p>
+    </div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
-  </form>
+    <!-- 🔹 TARJETA LOGIN -->
+    <div class="login-card">
+
+      <div class="title-area">
+        <h2>Iniciar Sesión</h2>
+        <p>Ingresa tu correo y contraseña para continuar</p>
+      </div>
+
+      <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+
+        <!-- Email -->
+        <div class="input-group">
+          <label>Correo electrónico *</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="tucorreo@ejemplo.com"
+            required
+            email
+            [(ngModel)]="formData.email"
+            #email="ngModel"
+          />
+          <small *ngIf="email.invalid && email.touched" class="error">
+            Ingresa un correo válido.
+          </small>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="input-group">
+          <label>Contraseña *</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Tu contraseña"
+            required
+            minlength="4"
+            [(ngModel)]="formData.password"
+            #password="ngModel"
+          />
+          <small *ngIf="password.invalid && password.touched" class="error">
+            La contraseña debe tener al menos 6 caracteres.
+          </small>
+        </div>
+
+        <button class="btn-submit" [disabled]="f.invalid">
+          Iniciar sesión
+        </button>
+
+      </form>
+
+      <p class="alternative">
+        ¿No tienes una cuenta?
+        <a routerLink="/register">Regístrate aquí</a>
+      </p>
+
+    </div>
+
+  </div> <!-- /login-wrapper -->
+
 </section>
+
+
+<!-- 🌟 MODAL DE ERROR O ÉXITO -->
+<div class="modal" *ngIf="modalVisible">
+  <div class="modal-content">
+
+    <div class="icon">{{ modalIcon }}</div>
+    <h2>{{ modalTitulo }}</h2>
+    <p>{{ modalMensaje }}</p>
+
+    <button class="btn-modal" (click)="cerrarModal()">Aceptar</button>
+
+  </div>
+</div>

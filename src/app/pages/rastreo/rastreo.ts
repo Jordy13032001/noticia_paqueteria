@@ -1,31 +1,33 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-rastreo',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './rastreo.html',
-  styleUrl: './rastreo.css'
+  styleUrls: ['./rastreo.css']
 })
 export class RastreoComponent {
-  idRastreo = '';
-  resultado: any = null;
-  error: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  buscarEnvio() {
-    this.http.get(`http://localhost:3000/api/envios/${this.idRastreo}`).subscribe({
-      next: (data) => {
-        this.resultado = data;
-        this.error = null;
+  codigo = "";
+  envio: any = null;
+  error = "";
+
+  buscar() {
+    this.error = "";
+    this.envio = null;
+
+    this.http.get(`http://localhost:3000/api/rastreo/${this.codigo}`).subscribe({
+      next: (res) => {
+        this.envio = res;
       },
       error: () => {
-        this.resultado = null;
-        this.error = 'No se encontró el envío o no tiene permisos para rastrearlo.';
+        this.error = "❌ No se encontró un envío con ese código.";
       }
     });
   }

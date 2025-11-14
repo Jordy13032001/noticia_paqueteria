@@ -1,0 +1,309 @@
+/* ================================
+   FONDO GENERAL DINÁMICO 
+================================ */
+.registro-section {
+  min-height: 100vh;
+  padding: 70px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: url('https://img.freepik.com/fotos-premium/cajas-carton-dispuestas-sobre-fondo-azul-listas-envio-preparacion-entrega_124717-14560.jpg?semt=ais_hybrid&w=740&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  backdrop-filter: blur(4px);
+}
+
+
+/* ================================
+   MENSAJE SUPERIOR (opcional)
+================================ */
+.top-message {
+  text-align: center;
+  background: rgba(0, 123, 255, 0.85);
+  padding: 35px 45px;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 40px;
+  max-width: 750px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.30);
+}
+
+.top-message h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.top-message p {
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+
+/* ================================
+   TARJETA FORMULARIO DE REGISTRO
+================================ */
+.registro-card {
+  background: #ffffffee;
+  padding: 45px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 22px;
+  box-shadow: 0 14px 45px rgba(0,0,0,0.25);
+  animation: fadeSlide 0.6s ease-out;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title-area {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.title-area h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0056a6;
+}
+
+.title-area p {
+  font-size: 20px;
+  color: #4a6b8c;
+}
+
+
+/* ================================
+   INPUTS Y CAMPOS
+================================ */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: #003d73;
+}
+
+.input-group .descripcion {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #5b7a96;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid #bbb;
+  border-radius: 14px;
+  font-size: 19px;
+  background: white;
+  transition: 0.2s;
+}
+
+::placeholder {
+  font-size: 18px;
+  color: #9ba8b6;
+}
+
+
+/* ================================
+   EFECTOS DE VALIDACIÓN / ERRORES
+================================ */
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 4px #ff4d4d88;
+}
+
+.error {
+  color: #ff4d4d;
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+
+/* ================================
+   BOTÓN DE REGISTRO
+================================ */
+.btn-submit {
+  width: 100%;
+  padding: 18px;
+  background: #1d8cff;
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.btn-submit:disabled {
+  background: #9fc8ef;
+  cursor: not-allowed;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #0c6fd6;
+}
+
+
+/* ================================
+   PARTE INFERIOR / ENLACES
+================================ */
+.alternative {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+/* ================================
+   MODAL OPCIONAL
+================================ */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 40px 35px;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 50px rgba(0,0,0,0.25);
+  animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.modal-content .icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.btn-modal {
+  padding: 12px 25px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-modal:hover {
+  background: #0064cc;
+}
+
+/* ================================ */
+/*   CENTRAR TODA LA TARJETA DE REGISTRO */
+/* ================================ */
+
+.registro-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* 🔥 Centra todo lo interno */
+  width: 100%;
+}
+
+/* Contenedor de cada campo */
+.input-group {
+  width: 100%;
+  max-width: 350px;     /* 🔥 Tamaño igual al login */
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 🔥 Centra label, input, error */
+  text-align: center;
+}
+
+/* Label centrado */
+.input-group label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #003d73;
+  width: 100%;
+  text-align: center;   /* 🔥 LABEL CENTRADO */
+}
+
+/* Inputs */
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  max-width: 350px;     /* 🔥 Igual que los del login */
+  padding: 15px 18px;
+  border: 1px solid #bbb;
+  border-radius: 14px;
+  font-size: 18px;
+  background: white;
+  transition: 0.2s;
+  text-align: center;   /* 🔥 Centra el texto dentro */
+}
+
+/* Error centrado */
+.error {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: center;   /* 🔥 ERROR CENTRADO */
+}
+
+/* Botón centrado */
+.btn-submit {
+  width: 100%;
+  max-width: 350px;
+  padding: 18px;
+  background: #1d8cff;
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #0c6fd6;
+}

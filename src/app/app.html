@@ -1,14 +1,74 @@
 <header>
   <h1>📦 Paquetería Express</h1>
+
   <nav>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-    <a routerLink="/noticias" routerLinkActive="active">Noticias</a>
-    <a routerLink="/rastreo" routerLinkActive="active">Rastreo</a>
-    <a routerLink="/contacto" routerLinkActive="active">Contáctenos</a>
-    <!-- 🔹 Si NO está logueado -->
-    <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active" class="login-link">Login</a>
-    <!-- 🔹 Si SÍ está logueado -->
-    <a *ngIf="isLoggedIn" (click)="logout()" class="login-link cerrar-sesion">Cerrar sesión</a>
+
+    <!-- =================== MENÚ PRINCIPAL =================== -->
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Inicio
+    </a>
+
+    <a routerLink="/noticias" routerLinkActive="active">
+      Noticias
+    </a>
+
+    <a routerLink="/rastreo" routerLinkActive="active">
+      Rastreo
+    </a>
+
+    <a routerLink="/contacto" routerLinkActive="active">
+      Contáctenos
+    </a>
+
+    <!-- =================== MENÚ REMITENTE =================== -->
+    <a 
+      *ngIf="isLoggedIn && !isAdmin"
+      routerLink="/remitente/panel"
+      class="menu-remitente"
+      routerLinkActive="active"
+    >
+      🧑‍💼 Mi Panel
+    </a>
+
+    <!-- =================== AUTENTICACIÓN =================== -->
+
+    <!-- 🔹 REGISTRARSE (solo si NO está logueado) -->
+    <a 
+      *ngIf="!isLoggedIn"
+      routerLink="/registro-remitente"
+      class="login-link"
+      routerLinkActive="active"
+    >
+      Registrarse
+    </a>
+
+    <!-- 🔹 LOGIN (solo si NO está logueado) -->
+    <a
+      *ngIf="!isLoggedIn"
+      routerLink="/login"
+      class="login-link"
+      routerLinkActive="active"
+    >
+      Login
+    </a>
+
+    <!-- 🔹 CERRAR SESIÓN (solo si SÍ está logueado) -->
+    <a
+      *ngIf="isLoggedIn"
+      (click)="logout()"
+      class="login-link cerrar-sesion"
+      style="cursor: pointer;"
+    >
+      Cerrar sesión
+    </a>
+    <!-- =================== MODO OSCURO =================== -->
+    <button
+      class="btn-tema"
+      (click)="toggleTheme()"
+      aria-label="Cambiar tema de color"
+    >
+      {{ isDarkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro' }}
+    </button>
 
   </nav>
 </header>

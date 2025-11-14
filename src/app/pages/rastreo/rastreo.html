@@ -1,28 +1,30 @@
-<section class="rastreo">
-  <div class="overlay">
-    <div class="contenedor">
-      <h2>Rastrea tu Envío</h2>
-      <p>Ingresa el ID de tu envío para verificar su estado actual.</p>
+<section class="rastreo-wrapper">
 
-      <form (submit)="buscarEnvio()" class="formulario">
-        <input
-          type="text"
-          [(ngModel)]="idRastreo"
-          placeholder="Ingrese ID de envío"
-          name="idRastreo"
-          required
-        />
-        <button type="submit" class="btn">Buscar</button>
-      </form>
+  <h2>🔍 Rastreo de Envíos</h2>
+  <p>Ingresa tu código de rastreo para ver el estado del envío.</p>
 
-      <div *ngIf="resultado" class="resultado">
-        <h3>📦 Resultado del Envío</h3>
-        <p><strong>ID:</strong> {{ resultado.id_envio }}</p>
-        <p><strong>Estado:</strong> {{ resultado.estado }}</p>
-        <p><strong>Cliente:</strong> {{ resultado.cliente }}</p>
-      </div>
+  <form (ngSubmit)="buscar()">
+    <input type="text" [(ngModel)]="codigo" name="codigo" placeholder="Ingresa el código..." required>
+    <button type="submit">Buscar</button>
+  </form>
 
-      <p *ngIf="error" class="error">{{ error }}</p>
-    </div>
+  <!-- RESULTADO -->
+  <div *ngIf="envio" class="resultado">
+    <h3>📦 Estado del Envío</h3>
+    <p><strong>Código:</strong> {{ envio.codigo_rastreo }}</p>
+    <p><strong>Estado:</strong> {{ envio.estado }}</p>
+    <p><strong>Fecha del envío:</strong> {{ envio.fecha_envio }}</p>
+
+    <h4>📍 Destinatario</h4>
+    <p>Nombre: {{ envio.Destinatario?.nombre }}</p>
+    <p>Dirección: {{ envio.Destinatario?.direccion }}</p>
+    <p>Teléfono: {{ envio.Destinatario?.telefono }}</p>
+
+    <h4>📦 Paquete</h4>
+    <p>{{ envio.Paquete?.descripcion }} - {{ envio.Paquete?.peso_kg }} kg</p>
   </div>
+
+  <!-- ERROR -->
+  <p class="error" *ngIf="error">{{ error }}</p>
+
 </section>

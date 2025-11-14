@@ -1,17 +1,59 @@
-<section class="contacto">
-  <h2>Contáctenos</h2>
-  <p>¿Tienes dudas o necesitas ayuda? Escríbenos y te responderemos pronto.</p>
+<section class="contact-wrapper">
 
-  <form>
-    <label>Nombre</label>
-    <input type="text" required>
+  <div class="contact-card">
 
-    <label>Correo</label>
-    <input type="email" required>
+    <h2 class="title">Contáctanos</h2>
+    <p class="subtitle">
+      ¿Tienes dudas o necesitas ayuda? Envíanos un mensaje y te responderemos lo antes posible.
+    </p>
 
-    <label>Mensaje</label>
-    <textarea rows="4" required></textarea>
+    <form #f="ngForm" (ngSubmit)="enviar(f)" class="form">
 
-    <button class="btn">Enviar</button>
-  </form>
+      <!-- Nombre -->
+      <div class="input-group">
+        <label>Nombre completo</label>
+        <input
+          type="text"
+          name="nombre"
+          required
+          [(ngModel)]="contacto.nombre"
+          placeholder="Tu nombre"
+        />
+      </div>
+
+      <!-- Correo -->
+      <div class="input-group">
+        <label>Correo electrónico</label>
+        <input
+          type="email"
+          name="correo"
+          required
+          email
+          [(ngModel)]="contacto.correo"
+          placeholder="tucorreo@ejemplo.com"
+        />
+      </div>
+
+      <!-- Mensaje -->
+      <div class="input-group">
+        <label>Mensaje</label>
+        <textarea
+          name="mensaje"
+          required
+          rows="4"
+          [(ngModel)]="contacto.mensaje"
+          placeholder="Escribe aquí tu mensaje..."
+        ></textarea>
+      </div>
+
+      <button class="btn-submit" type="submit" [disabled]="f.invalid">Enviar mensaje</button>
+
+    </form>
+
+    <!-- MENSAJES -->
+    <p class="msg success" *ngIf="enviado">✔ Tu mensaje fue enviado correctamente.</p>
+    <p class="msg error" *ngIf="error">❌ Ocurrió un error al enviar el mensaje.</p>
+
+  </div>
+
 </section>

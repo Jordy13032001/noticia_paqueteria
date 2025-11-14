@@ -4,19 +4,33 @@
   <ul class="nav-links">
     <li><a routerLink="/">Inicio</a></li>
     <li><a routerLink="/noticias">Noticias</a></li>
-    <li><a routerLink="/contacto">Contáctanos</a></li>
     <li><a routerLink="/rastreo">Rastreo</a></li>
+    <li><a routerLink="/contacto">Contáctanos</a></li>
   </ul>
 
   <div class="acciones">
-    <!-- 🔹 Si no está logueado -->
-    <button *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-login">
-      Login
+
+    <!-- 🔹 Si NO está logueado -->
+    <ng-container *ngIf="!isLoggedIn">
+      <button routerLink="/login" class="btn btn-login">Login</button>
+      <button routerLink="/registro-remitente" class="btn btn-register">Registrarse</button>
+    </ng-container>
+
+    <!-- 🔹 Si es ADMIN -->
+    <button *ngIf="isAdmin" routerLink="/admin" class="btn btn-admin">
+      Admin Panel
     </button>
 
-    <!-- 🔹 Si está logueado -->
+    <!-- 🔹 Si es REMITENTE -->
+    <button *ngIf="isRemitente && !isAdmin" routerLink="/mi-cuenta" class="btn btn-user">
+      Mi Cuenta
+    </button>
+
+    <!-- 🔹 Logout -->
     <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-logout">
       Cerrar sesión
     </button>
+
+    
   </div>
 </nav>

@@ -1,405 +1,189 @@
-/* Banner principal */
+/* ==================== ESTILOS PRINCIPALES ==================== */
 .banner {
-  background: linear-gradient(rgb(77,20,140,0.8), rgba(255, 255, 255, 0.8)),
+  background: linear-gradient(rgba(125, 171, 214, 0.8), rgba(255, 255, 255, 0.8)),
               url('https://static.vecteezy.com/system/resources/previews/007/267/469/non_2x/men-delivery-service-courier-and-truck-shipping-with-a-mobile-smart-phone-free-vector.jpg');
   background-size: cover;
   background-position: center;
-  color: rgb(58, 2, 95);
-  padding: 5rem 2rem;
+  color: #000;
+  padding: 6rem 2rem;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .banner .texto h2 {
-  font-size: 2.8rem;
+  font-size: 3rem;
+  font-weight: 800;
   margin-bottom: 1rem;
-  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .banner .texto p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.8rem;
+  line-height: 1.8;
 }
 
-/* Botón de edición para admin */
-.editar-admin {
-  text-align: center;
-  margin-top: 1.5rem;
-}
-
-.btn-editar {
-  background-color: #4d148c;
+.banner .btn {
+  background-color: #567ce6;
   color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
   border-radius: 10px;
-  cursor: pointer;
   font-weight: 600;
-  transition: 0.3s;
+  padding: 1rem 2.4rem;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
 }
 
-.btn-editar:hover {
-  background-color: #6e30b1;
-  transform: scale(1.05);
+.banner .btn:hover {
+  background-color: #2c50b4;
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(91, 28, 191, 0.4);
 }
 
-/* Modal flotante */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  backdrop-filter: blur(3px);
-  animation: fadeIn 0.3s ease;
-}
-
-.modal {
-  background: #fff;
-  border-radius: 15px;
-  padding: 2rem;
-  width: 90%;
-  max-width: 550px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease;
-}
-
-.modal h2 {
-  text-align: center;
-  color: #4d148c;
-  margin-bottom: 1.5rem;
-}
-
-.modal label {
-  font-weight: 600;
-  color: #333;
-  display: block;
-  margin-top: 1rem;
-}
-
-.modal input,
-.modal textarea {
-  width: 100%;
-  padding: 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  margin-top: 0.3rem;
-}
-
-.modal textarea {
-  resize: vertical;
-  min-height: 70px;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-.btn-guardar {
-  background-color: #4d148c;
-  color: white;
-  padding: 0.7rem 1.4rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn-guardar:hover {
-  background-color: #6e30b1;
-}
-
-.btn-cancelar {
-  background-color: #aaa;
-  color: white;
-  padding: 0.7rem 1.4rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn-cancelar:hover {
-  background-color: #888;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* --- Tarjetas modernas --- */
-.empresa-info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin: 3rem 0;
-  padding: 0 1rem;
-}
-
-.empresa-card {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  width: 100%;
-  max-width: 380px;
-  transition: all 0.3s ease;
-  text-align: left;
-}
-
-.empresa-card.principal {
-  border-top: 5px solid var(--color-principal);
-}
-
-.empresa-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.empresa-card h3 {
-  color: var(--color-principal);
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  border-left: 5px solid var(--color-principal);
-  padding-left: 10px;
-}
-
-.empresa-card p {
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* --- Botón de edición --- */
-.editar-admin {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-.btn-editar {
-  background: var(--color-principal);
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  padding: 0.8rem 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-editar:hover {
-  background: #5b1cbf;
-  transform: scale(1.05);
-}
-
-/* --- Modal (elegante y oscuro difuminado) --- */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
-}
-
-.modal {
-  background: #fff;
-  border-radius: 15px;
-  padding: 2rem;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.3s ease;
-}
-
-.modal h2 {
-  color: var(--color-principal);
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.modal label {
-  display: block;
-  margin-top: 1rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.modal input,
-.modal textarea {
-  width: 100%;
-  padding: 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-top: 0.3rem;
-  resize: none;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-.btn-guardar {
-  background: var(--color-principal);
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-guardar:hover {
-  background: #5b1cbf;
-}
-
-.btn-cancelar {
-  background: #ccc;
-  color: #333;
-  border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-cancelar:hover {
-  background: #b5b5b5;
-}
-
-/* --- Animaciones --- */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
+/* ==================== POR QUÉ ELEGIRNOS ==================== */
 .porque {
-  max-width: 800px;           /* ancho máximo */
-  margin: 60px auto;          /* centrado horizontal */
-  background: #fff;           /* fondo blanco */
-  padding: 2rem;              /* espacio interno */
-  border-radius: 15px;        /* bordes redondeados */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* sombra suave */
-  text-align: center;         /* centrado del texto */
+  max-width: 900px;
+  margin: 80px auto;
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(97, 153, 236, 0.1);
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .porque:hover {
-  transform: scale(1.02);     /* pequeño efecto al pasar el mouse */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .porque h3 {
-  font-size: 1.8rem;
-  color: #4b0082;             /* tono morado profesional */
+  font-size: 2.3rem;
+  color: #000000;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .porque p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.9;
 }
 
-/* ==================== SECCIÓN SERVICIOS ==================== */
-.servicios {
-  text-align: center;
+/* ==================== MISIÓN Y VISIÓN ==================== */
+.empresa-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
   margin: 4rem auto;
-  max-width: 1100px;
-  padding: 2rem;
+  max-width: 1200px;
+}
+
+.empresa-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  padding: 2.8rem;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.empresa-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+.empresa-card h3 {
+  font-size: 2rem;
+  color: #000000;
+  border-left: 6px solid #4d148c;
+  padding-left: 12px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.empresa-card p {
+  font-size: 1.3rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* ==================== SERVICIOS ==================== */
+.servicios {
+  background: linear-gradient(180deg, #faf8ff, #efe9fb);
+  text-align: center;
+  padding: 5rem 2rem;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin: 5rem auto;
+  max-width: 1200px;
 }
 
 .servicios h2 {
-  font-size: 2rem;
-  color: #4d148c;
+  font-size: 2.6rem;
+  color: #000000;
   margin-bottom: 2rem;
-  font-weight: 700;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .tarjetas-servicios {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .tarjeta {
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  padding: 2.5rem;
   transition: all 0.3s ease;
 }
 
 .tarjeta:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .tarjeta .icono {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: #000000;
   display: block;
   margin-bottom: 1rem;
 }
 
 .tarjeta h3 {
-  color: #4d148c;
+  color: #000000;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .tarjeta p {
   color: #444;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 1.2rem;
+  line-height: 1.7;
 }
 
 /* ==================== TESTIMONIOS ==================== */
 .testimonios {
   background: linear-gradient(180deg, #f6f3fb, #e9dff9);
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
 }
 
 .testimonios h2 {
-  color: #4d148c;
-  font-size: 2rem;
+  color: #000000;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
-  font-weight: 700;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .contenedor-testimonios {
@@ -413,8 +197,8 @@
   background: #fff;
   border-radius: 15px;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 1.5rem;
+  width: 320px;
+  padding: 2rem;
   transition: transform 0.3s ease;
 }
 
@@ -425,12 +209,14 @@
 .testimonio p {
   font-style: italic;
   color: #333;
-  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .testimonio h4 {
   color: #4d148c;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 /* ==================== EFECTOS GLOBALES ==================== */
@@ -449,19 +235,140 @@ section {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* ==================== DETALLES DE BRANDING ==================== */
-.banner .btn {
-  background-color: #6b25c2;
-  color: white;
-  border-radius: 10px;
-  font-weight: 600;
-  padding: 0.9rem 2rem;
-  transition: 0.3s ease;
+/* ==================== MODAL - OVERLAY ==================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.banner .btn:hover {
-  background-color: #571e9d;
-  transform: scale(1.08);
-  box-shadow: 0 0 15px rgba(91, 28, 191, 0.4);
+/* ==================== MODAL - CONTENEDOR ==================== */
+.modal {
+  background: #ffffff;
+  width: 90%;
+  max-width: 480px;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  animation: modalFade 0.28s ease-out;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  color: #4d148c;
+}
+
+/* Inputs dentro del modal */
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 10px;
+  background: #fafafa;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: #8a45dd;
+  box-shadow: 0 0 5px rgba(138, 69, 221, 0.4);
+}
+
+.modal textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ==================== BOTONES MODAL ==================== */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 15px;
+}
+
+.btn-guardar {
+  background: #6b25c2;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.btn-guardar:hover {
+  background: #571e9d;
+}
+
+.btn-cancelar {
+  background: #ccc;
+  color: #333;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.btn-cancelar:hover {
+  background: #b8b8b8;
+}
+
+/* ==================== BOTÓN EDITAR PARA ADMIN ==================== */
+.editar-admin {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-editar {
+  background: #548aee;
+  padding: 8px 12px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-editar:hover {
+  background: #507aec;
+}
+
+/* ==================== CURSOR DEDITO PARA CERRAR SESIÓN ==================== */
+button,
+.btn-editar,
+.btn-guardar,
+.btn-cancelar,
+a {
+  cursor: pointer !important;
 }
 

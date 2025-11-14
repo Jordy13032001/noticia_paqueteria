@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { jwtDecode } from 'jwt-decode';
 
@@ -12,34 +12,48 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./header.css']
 })
 export class HeaderComponent implements OnInit {
+
   isLoggedIn = false;
   isAdmin = false;
+  isRemitente = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.actualizarEstado();
+    this.router.events.subscribe(() => this.actualizarEstado());
   }
 
   actualizarEstado() {
     const token = this.authService.getToken();
-    if (token) {
-      this.isLoggedIn = true;
-      try {
-        const decoded: any = jwtDecode(token);
-        this.isAdmin = decoded.rol === 'admin';
-      } catch {
-        this.isAdmin = false;
-      }
-    } else {
-      this.isLoggedIn = false;
-      this.isAdmin = false;
+
+    if (!token) {
+      this.reset();
+      return;
     }
+
+    try {
+      const decoded: any = jwtDecode(token);
+
+      this.isLoggedIn = true;
+      this.isAdmin = decoded.rol === 'admin';
+      this.isRemitente = !!decoded.id_remitente;
+
+    } catch (error) {
+      console.error("Token inválido:", error);
+      this.reset();
+    }
+  }
+
+  reset() {
+    this.isLoggedIn = false;
+    this.isAdmin = false;
+    this.isRemitente = false;
   }
 
   logout() {
     this.authService.logout();
-    this.isLoggedIn = false;
-    this.isAdmin = false;
+    this.reset();
+    this.router.navigate(['/']);
   }
 }

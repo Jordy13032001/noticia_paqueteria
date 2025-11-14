@@ -1,18 +1,57 @@
-:root {
-  --color-principal: #4d148c;
-  --color-secundario: #a054e7;
-  --color-fondo: #baa9e7;
-  --texto: #333;
+/* ======================================================== */
+/*           FIX GLOBAL PARA QUE TODO PUEDA CENTRARSE       */
+/* ======================================================== */
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+app-root, router-outlet {
+  width: 100%;
+  display: block;
+}
+
+/* ======================================================== */
+/* 🎨 Paleta general */
+/* ======================================================== */
+
+:root {
+  /* Tema claro (por defecto) */
+  --color-fondo: #0B1220;
+  --color-texto: #F3F4F6;
+  --color-principal: #60A5FA;
+  --color-secundario: #22D3EE;
+  --color-acento: #F59E0B;
+}
+
+/* 🌙 Tema oscuro */
+[data-theme="dark"] {
+  --color-fondo: #121212;
+  --color-texto: #f0f0f0;
+  --color-principal: #9b6cf6;
+  --color-secundario: #1f1f1f;
+  --color-acento: #ff9f50;
+}
+
+/* ======================================================== */
+/* ⚙️ Estilos base */
+/* ======================================================== */
 
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
   background-color: var(--color-fondo);
-  color: var(--texto);
+  color: var(--color-texto);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Header */
+/* ======================================================== */
+/* 🧭 Header */
+/* ======================================================== */
+
 header {
   background-color: var(--color-principal);
   color: white;
@@ -23,6 +62,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.3s ease;
 }
 
 header h1 {
@@ -30,17 +70,25 @@ header h1 {
   font-weight: 600;
 }
 
+/* ======================================================== */
+/* 🔗 Navegación */
+/* ======================================================== */
+
 nav a {
   color: white;
   text-decoration: none;
   margin-left: 1rem;
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  color: var(--color-secundario);
+  color: var(--color-acento);
   text-decoration: underline;
 }
+
+/* ======================================================== */
+/* 📱 Contenido */
+/* ======================================================== */
 
 main {
   max-width: 1200px;
@@ -48,21 +96,69 @@ main {
   padding: 0 1rem;
 }
 
-/* Botones */
+/* ======================================================== */
+/* 🎛️ Botones generales */
+/* ======================================================== */
+
 .btn {
-  background: var(--color-secundario);
+  background: var(--color-acento);
   color: white;
   padding: 0.8rem 1.2rem;
   border-radius: 6px;
   text-decoration: none;
-  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
-  background: #802ecc;
+  background: #e55a00;
+  transform: translateY(-2px);
 }
 
-/* Footer */
+/* ======================================================== */
+/* 🌓 Botón de modo oscuro */
+/* ======================================================== */
+
+.btn-theme {
+  margin-left: 1rem;
+  background: var(--color-secundario);
+  color: var(--color-texto);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-theme:hover {
+  background: var(--color-acento);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ======================================================== */
+/* 🔐 Botones de login/logout */
+/* ======================================================== */
+
+.login-link {
+  background-color: var(--color-acento);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-link:hover {
+  background-color: #e55a00;
+}
+
+/* ======================================================== */
+/* 🦶 Footer */
+/* ======================================================== */
+
 footer {
   background-color: var(--color-principal);
   color: white;
@@ -70,13 +166,88 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
   margin-top: 3rem;
+  transition: background-color 0.3s ease;
 }
 
-.login-link {
-  background-color: #ff6200;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+/* ======================================================== */
+/* 🌐 Responsividad */
+/* ======================================================== */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav a, .btn-theme {
+    display: block;
+    margin: 0.5rem 0;
+  }
 }
-.login-link:hover {
-  background-color: #e55a00;
+
+/* ---------- HEADER ---------- */
+header {
+  background-color: #64a9ff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+}
+
+/* ---------- LOGO + BOTÓN ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botón elegante al lado del título */
+.btn-edit-header {
+  background: #ffd369;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  color: #222;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.25);
+  transition: 0.25s ease;
+}
+
+/* Hover profesional */
+.btn-edit-header:hover {
+  background: #ffb84c;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 12px rgba(0,0,0,0.3);
+}
+
+/* ============================
+   FONDO GLOBAL CON IMAGEN SUAVE
+   ============================ */
+body {
+  background: linear-gradient(to bottom, #83abc5, #83abc5);
+  scroll-behavior: smooth;
+
+  /* Necesario para colocar la imagen debajo */
+  position: relative;
+  z-index: 0;
+}
+
+/* Imagen de fondo suave — marca de agua */
+body::before {
+  content: "";
+  position: fixed; /* Para que siempre esté en pantalla */
+  inset: 0;
+  background-image: url("https://plus.unsplash.com/premium_photo-1682090260563-191f8160ca48?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZW50cmVnYSUyMGRlJTIwcGFxdWV0ZXN8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  /* 🔥 Transparencia elegante */
+  opacity: 0.15;
+
+  z-index: -1; /* Para que quede detrás de TODO */
+  pointer-events: none; /* No interfiere con clics */
 }

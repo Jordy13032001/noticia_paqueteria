@@ -9,26 +9,39 @@ import { jwtDecode } from 'jwt-decode';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterModule],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'] // ✅ corregido (plural)
+  styleUrls: ['./app.css']
 })
 export class AppComponent implements OnInit {
   currentYear = new Date().getFullYear();
   isLoggedIn = false;
   isAdmin = false;
+  isDarkMode = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.verificarEstado();
 
-    // 🔄 Revisa sesión en cada navegación (útil tras login o logout)
-    this.router.events.subscribe(() => {
-      this.verificarEstado();
-    });
+    // 🌓 Cargar tema guardado (solo si estamos en navegador)
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      this.isDarkMode = savedTheme === 'dark';
+    }
+
+    // 🔄 Revisa sesión en cada navegación
+    this.router.events.subscribe(() => this.verificarEstado());
   }
 
+  toggleTheme() {
+    if (typeof window === 'undefined') return;
+
+    this.isDarkMode = !this.isDarkMode;
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
   verificarEstado() {
-    // ⚙️ Evita errores en SSR
     if (typeof window === 'undefined') return;
 
     const token = this.authService.getToken();
@@ -52,4 +65,5 @@ export class AppComponent implements OnInit {
     this.isAdmin = false;
     this.router.navigate(['/']);
   }
+
 }
